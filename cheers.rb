@@ -21,5 +21,11 @@ end
 
 puts "Your name is #{name}"
 name.upcase.each_char do |char|
-  puts "Give me... #{char}"
+  if char[0] === "A" || char[0] === "E" || char[0] === "I" || char[0] === "O" || char[0] === "U"
+    article = "an"
+  else
+    article = "a"
+  end
+  puts "Give me #{article} #{char}"
 end
+puts "#{name.upcase}'s just GRAND!"

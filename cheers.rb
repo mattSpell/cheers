@@ -11,6 +11,8 @@
 
 # P.S.: name.methods - Object.methods
 
+require 'date'
+
 puts "What's your name?"
 name = gets.chomp
 
@@ -29,3 +31,16 @@ name.upcase.each_char do |char|
   puts "Give me #{article} #{char}"
 end
 puts "#{name.upcase}'s just GRAND!"
+
+puts "Hey, #{name}, what's your birthday?"
+birthday = gets.chomp
+bdate = Date.strptime(birthday.to_s, "%m/%d/%y")
+
+today = DateTime.now
+if bdate.yday < today.yday
+  bdate = Date.new(today.year + 1, bdate.month, bdate.day)
+else
+  bdate = Date.new(today.year, bdate.month, bdate.day)
+end
+daysToGo = (bdate - today).to_i + 1
+puts "Awesome! Your birthday is in #{daysToGo} days! Happy birthday in advance!"
